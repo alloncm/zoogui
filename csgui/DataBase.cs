@@ -73,7 +73,9 @@ namespace csgui
             for(int i=0;i<newAnimals.Count;i++)
             {
                 InsertToDataBase(newAnimals[i]);
+                loadedAnimals.Add(newAnimals[i]);
             }
+            newAnimals.Clear();
             System.Console.WriteLine("data saved succesfuly");
         }
 
@@ -105,7 +107,8 @@ namespace csgui
                     int height = (int)rea["height"];
                     int weight = (int)rea["weight"];
                     string notes = (string)rea["notes"];
-                    Animal a = new Animal(name, (Category)i, height, weight, notes);
+                    int id = (int)rea["id"];
+                    Animal a = new Animal(id,name, (Category)i, height, weight, notes);
                     LoadAnimal(a);
                 }
                 com.Dispose();

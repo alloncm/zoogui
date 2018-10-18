@@ -23,6 +23,7 @@ namespace csgui
             fin.Close();
             db = new DataBase("database.sqlite");
             db.Load();
+            db.Print();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,8 +59,12 @@ namespace csgui
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            DataTable dt = db.GetDataTable(catergorySelected);
+            dataGridView1.DataSource = dt;
             DeleteForm delete = new DeleteForm(db, catergorySelected);
             delete.ShowDialog();
+            dt = db.GetDataTable(catergorySelected);
+            dataGridView1.DataSource = dt;
         }
     }
 }

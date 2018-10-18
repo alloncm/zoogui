@@ -39,9 +39,6 @@ namespace csgui
             else
             {
                 db.Delete(db.GetAnimal(id).Name);
-
-                db.Save();
-                
                 this.Close();
             }
             

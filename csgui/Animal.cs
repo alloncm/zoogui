@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace csgui
 {
@@ -20,7 +21,7 @@ namespace csgui
     public class Animal
     {
         private static int[] nextId = new int [6];
-
+       
 
         public int Id { get; }
 
@@ -56,7 +57,21 @@ namespace csgui
             SpecialNotes = sn;
             Id = GetNextId();
         }
+        public Animal(int id,string n, Category c, int h, int w, string sn)
+        {
+            Name = n;
+            category = c;
+            Height = h;
+            Weight = w;
+            SpecialNotes = sn;
+            Id = id;
 
+            int i = id / 10;
+            if(nextId[(int)c]<i)
+            {
+                nextId[(int)c] = i;
+            } 
+        }
         public void AddSpecialNotes(string note)
         {
             SpecialNotes += '\n' + note;
