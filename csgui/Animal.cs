@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace csgui
 {
-    enum Category
+    public enum Category
     {
+        None=-1,
         Predator,
         GrassEater,
         Bird,
@@ -16,7 +17,7 @@ namespace csgui
         DobleLife,
         Count
     }
-    class Animal
+    public class Animal
     {
         private static int[] nextId = new int [6];
 

@@ -7,7 +7,7 @@ using System.Data.SQLite;
 using System.Data;
 namespace csgui
 {
-    class DataBase
+    public class DataBase
     {
         private string fileName;
         private SQLiteConnection dbConnection;
@@ -26,10 +26,12 @@ namespace csgui
             newAnimals = new List<Animal>();
             loadedAnimals = new List<Animal>();
             tables = new List<string>();
+            
             for(int i=0;i<6;i++)
             {
                 tables.Add("");
             }
+            
         }
 
         public void AddAnimal(Animal a)
@@ -222,9 +224,9 @@ namespace csgui
             return null; 
         }
 
-        public DataTable GetDataTable()
+        public DataTable GetDataTable(Category c)
         {
-            string sql = "SELECT * FROM Predator";
+            string sql = "SELECT * FROM "+c.ToString();
             SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
             SQLiteDataReader sdr = cmd.ExecuteReader();
             DataTable dt = new DataTable();

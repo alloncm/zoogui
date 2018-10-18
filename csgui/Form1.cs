@@ -14,6 +14,8 @@ namespace csgui
     public partial class Form1 : Form
     {
         private DataBase db;
+
+        private Category catergorySelected = Category.Predator;
         public Form1()
         {
             InitializeComponent();
@@ -25,24 +27,39 @@ namespace csgui
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DataTable dt = db.GetDataTable();
+            DataTable dt = db.GetDataTable(catergorySelected);
             dataGridView1.DataSource = dt;
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            //gets the table the title
+            TableName.Text = catergorySelected.ToString();
         }
+        
 
         private void AddButtonClick(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
+            Form2 form = new Form2(db);
             form.ShowDialog();
+
+            DataTable dt = db.GetDataTable(catergorySelected);
+            dataGridView1.DataSource = dt;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void CategoryTable_SelectedIndexChanged(object sender, EventArgs e)
         {
+            System.Windows.Forms.ComboBox t = (System.Windows.Forms.ComboBox)sender;
+            catergorySelected = (Category)t.SelectedIndex;
 
+            DataTable dt = db.GetDataTable(catergorySelected);
+            dataGridView1.DataSource = dt;
+
+            //gets the table the title
+            TableName.Text = catergorySelected.ToString();
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            DeleteForm delete = new DeleteForm(db, catergorySelected);
+            delete.ShowDialog();
         }
     }
 }
