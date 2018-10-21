@@ -70,13 +70,28 @@ namespace csgui
 
         private void ShowFilters_Click(object sender, EventArgs e)
         {
-            if(attrib1!=Attrib.None&&attrib1T!="")
+            char c = attrib1T[0];
+            bool sign = c != '=' && c != '>' && c != '<';
+            string s = attrib1T.Substring(1);
+            int r;
+            bool isInt = true;
+            if (attrib1!=Attrib.name&&attrib1!=Attrib.notes)
             {
-                DataTable dt = db.GetDataTableQ(cat, attrib1, attrib1T);
-                ShowData sd = new ShowData(dt);
-                sd.ShowDialog();
+                isInt = Int32.TryParse(s, out r);
             }
-            
+            if (sign && !isInt)
+            {
+                MessageBox.Show("invalid Input");
+            }
+            else
+            {
+                if (attrib1 != Attrib.None && attrib1T != "")
+                {
+                    DataTable dt = db.GetDataTableQ(cat, attrib1, attrib1T);
+                    ShowData sd = new ShowData(dt);
+                    sd.ShowDialog();
+                }
+            }
         }
     }
 }
