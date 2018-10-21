@@ -70,26 +70,53 @@ namespace csgui
 
         private void ShowFilters_Click(object sender, EventArgs e)
         {
-            char c = attrib1T[0];
-            bool sign = c != '=' && c != '>' && c != '<';
-            string s = attrib1T.Substring(1);
-            int r;
-            bool isInt = true;
-            if (attrib1!=Attrib.name&&attrib1!=Attrib.notes)
+            if (attrib1 != Attrib.None && attrib1T != "")
             {
-                isInt = Int32.TryParse(s, out r);
-            }
-            if (sign && !isInt)
-            {
-                MessageBox.Show("invalid Input");
-            }
-            else
-            {
-                if (attrib1 != Attrib.None && attrib1T != "")
+                //checks attrib1
+                char c = attrib1T[0];
+                bool sign = c != '=' && c != '>' && c != '<';
+                string s = attrib1T.Substring(1);
+                int r;
+                bool isInt = true;
+                if (attrib1 != Attrib.name && attrib1 != Attrib.notes)
                 {
-                    DataTable dt = db.GetDataTableQ(cat, attrib1, attrib1T);
-                    ShowData sd = new ShowData(dt);
-                    sd.ShowDialog();
+                    isInt = Int32.TryParse(s, out r);
+                }
+                if (sign && !isInt)
+                {
+                    MessageBox.Show("invalid Input Attrib 1");
+                }
+                else
+                {
+                    if (attrib1 != Attrib.None && attrib1T != "")
+                    {
+                        //checks attrib2
+                        c = attrib2T[0];
+                        sign = c != '=' && c != '>' && c != '<';
+                        s = attrib2T.Substring(1);
+                        isInt = true;
+                        if (attrib2 != Attrib.name && attrib2 != Attrib.notes)
+                        {
+                            isInt = Int32.TryParse(s, out r);
+                        }
+                        if (sign && !isInt)
+                        {
+                            MessageBox.Show("invalid Input Attrib 2");
+                        }
+                        else
+                        {
+                            DataTable dt = db.GetDataTableQ(cat, attrib1, attrib1T,attrib2,attrib2T,ao);
+                            ShowData sd = new ShowData(dt);
+                            sd.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        DataTable dt = db.GetDataTableQ(cat, attrib1, attrib1T);
+                        ShowData sd = new ShowData(dt);
+                        sd.ShowDialog();
+                    }
+
                 }
             }
         }

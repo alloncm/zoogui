@@ -20,8 +20,8 @@ namespace csgui
 
     public enum AndOr
     {
-        And,
-        Or
+        AND,
+        OR
     }
 
     public class DataBase
@@ -265,7 +265,15 @@ namespace csgui
             return dt;
         }
 
-
+        public DataTable GetDataTableQ(Category c, Attrib attrib1, string attrib1T, Attrib attrib2, string attrib2T,AndOr sign)
+        {
+            string sql = "SELECT * FROM " + c.ToString() + " WHERE " + attrib1.ToString() + attrib1T + " "+sign.ToString()+" "+attrib2.ToString()+attrib2T+";";
+            SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
+            SQLiteDataReader sdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(sdr);
+            return dt;
+        }
 
         ~DataBase()
         {
