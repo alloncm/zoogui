@@ -82,13 +82,18 @@ namespace csgui
                 {
                     isInt = Int32.TryParse(s, out r);
                 }
-                if (sign && !isInt)
+                else
+                {
+                    string temp = c + "'" + s + "'";
+                    attrib1T = temp;
+                }
+                if (sign || !isInt)
                 {
                     MessageBox.Show("invalid Input Attrib 1");
                 }
                 else
                 {
-                    if (attrib1 != Attrib.None && attrib1T != "")
+                    if (attrib2 != Attrib.None && attrib2T != "")
                     {
                         //checks attrib2
                         c = attrib2T[0];
@@ -98,6 +103,11 @@ namespace csgui
                         if (attrib2 != Attrib.name && attrib2 != Attrib.notes)
                         {
                             isInt = Int32.TryParse(s, out r);
+                        }
+                        else
+                        {
+                            string temp = c + "'" + s + "'";
+                            attrib2T = temp;
                         }
                         if (sign && !isInt)
                         {
