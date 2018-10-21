@@ -60,9 +60,17 @@ namespace csgui
         private void Delete_Click(object sender, EventArgs e)
         {
             DataTable dt = db.GetDataTable(catergorySelected);
-            dataGridView1.DataSource = dt;
-            DeleteForm delete = new DeleteForm(db, catergorySelected);
+            DeleteForm delete = new DeleteForm(db);
             delete.ShowDialog();
+            dt = db.GetDataTable(catergorySelected);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            DataTable dt = db.GetDataTable(catergorySelected);
+            csgui.Update update = new csgui.Update (db);
+            update.ShowDialog();
             dt = db.GetDataTable(catergorySelected);
             dataGridView1.DataSource = dt;
         }

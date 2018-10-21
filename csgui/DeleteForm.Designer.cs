@@ -37,15 +37,15 @@
             // DeleteLabel
             // 
             this.DeleteLabel.AutoSize = true;
-            this.DeleteLabel.Location = new System.Drawing.Point(28, 46);
+            this.DeleteLabel.Location = new System.Drawing.Point(79, 49);
             this.DeleteLabel.Name = "DeleteLabel";
-            this.DeleteLabel.Size = new System.Drawing.Size(128, 13);
+            this.DeleteLabel.Size = new System.Drawing.Size(108, 13);
             this.DeleteLabel.TabIndex = 0;
-            this.DeleteLabel.Text = "Enter an id to delete from ";
+            this.DeleteLabel.Text = "Enter an id to delete  ";
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(81, 143);
+            this.Delete.Location = new System.Drawing.Point(82, 146);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(75, 23);
             this.Delete.TabIndex = 2;
@@ -55,7 +55,7 @@
             // 
             // IdToDel
             // 
-            this.IdToDel.Location = new System.Drawing.Point(81, 86);
+            this.IdToDel.Location = new System.Drawing.Point(82, 89);
             this.IdToDel.Maximum = new decimal(new int[] {
             1000,
             0,

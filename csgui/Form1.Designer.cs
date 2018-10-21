@@ -33,6 +33,7 @@
             this.TableName = new System.Windows.Forms.Label();
             this.CategoryTable = new System.Windows.Forms.ComboBox();
             this.Delete = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +98,22 @@
             this.Delete.UseVisualStyleBackColor = true;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Location = new System.Drawing.Point(21, 188);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(86, 23);
+            this.UpdateButton.TabIndex = 5;
+            this.UpdateButton.Text = "Update Animal";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1884, 961);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.CategoryTable);
             this.Controls.Add(this.TableName);
@@ -123,6 +135,7 @@
         private System.Windows.Forms.Label TableName;
         private System.Windows.Forms.ComboBox CategoryTable;
         private System.Windows.Forms.Button Delete;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }
 

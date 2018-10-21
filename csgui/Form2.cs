@@ -39,6 +39,11 @@ namespace csgui
             {
                 isGood = false;
             }
+            else if(db.GetId(name)!=-1)
+            {
+                isGood = false;
+            }
+
             else if(height==0)
             {
                 isGood = false;
