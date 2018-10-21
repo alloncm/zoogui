@@ -74,5 +74,11 @@ namespace csgui
             dt = db.GetDataTable(catergorySelected);
             dataGridView1.DataSource = dt;
         }
+
+        private void FilterButton_Click(object sender, EventArgs e)
+        {
+            FilterForm ff = new FilterForm(db);
+            ff.ShowDialog();
+        }
     }
 }

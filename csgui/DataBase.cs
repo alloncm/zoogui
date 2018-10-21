@@ -7,6 +7,23 @@ using System.Data.SQLite;
 using System.Data;
 namespace csgui
 {
+
+    public enum Attrib
+    {
+        id,
+        name,
+        height,
+        weight,
+        notes,
+        None
+    }
+
+    public enum AndOr
+    {
+        And,
+        Or
+    }
+
     public class DataBase
     {
         private string fileName;
@@ -236,6 +253,19 @@ namespace csgui
             dt.Load(sdr);
             return dt;
         }
+
+
+        public DataTable GetDataTableQ(Category c,Attrib attrib,string attribT)
+        {
+            string sql = "SELECT * FROM " + c.ToString() + " WHERE " + attrib.ToString() + attribT+";";
+            SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
+            SQLiteDataReader sdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(sdr);
+            return dt;
+        }
+
+
 
         ~DataBase()
         {

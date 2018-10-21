@@ -155,7 +155,7 @@
             "Bird",
             "Crawl",
             "Fish",
-            "DobleLif"});
+            "DobleLife"});
             this.CategoryList.Location = new System.Drawing.Point(120, 198);
             this.CategoryList.Name = "CategoryList";
             this.CategoryList.Size = new System.Drawing.Size(121, 21);
